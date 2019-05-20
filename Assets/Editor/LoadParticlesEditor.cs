@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEditor;
 using UnityEngine;
 
-public class LoadParticlesEditor : MonoBehaviour
+[CustomEditor(typeof(LoadParticles))]
+public class LoadParticlesEditor : Editor
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnInspectorGUI()
     {
-        
-    }
+        DrawDefaultInspector();
+        LoadParticles script = (LoadParticles)target;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (GUILayout.Button("Load"))
+        {
+            script.DoLoadParticles();
+        }
     }
 }
